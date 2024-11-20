@@ -1,21 +1,17 @@
 {
     "name": "Jupyter Notebook Environment",
-    "image": "mcr.microsoft.com/devcontainers/python:3.11",
-    "features": {
-      "ghcr.io/devcontainers/features/python:1": {
-        "version": "3.11"
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-toolsai.jupyter",
+          "ms-python.python"
+        ]
       }
     },
-    "postCreateCommand": "python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-            "ms-toolsai.jupyter",
-            "ms-python.python"
-            ]
-        }
-    },
-    "forwardPorts": [8888],  // Jupyter's default port
+    "forwardPorts": [8888],
     "remoteUser": "vscode"
   }
   
