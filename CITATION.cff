@@ -21,7 +21,7 @@ keywords:
   - scikit-learn
 license: "MIT"
 repository-code: "https://github.com/gozsari/ML_intro" 
-doi: "" 
+doi: "10.5281/zenodo.14249784" 
 date-released: 2024-11-29
 version: "1.0.0"
 
