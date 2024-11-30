@@ -142,7 +142,7 @@ This ReadMe serves as:
 2. A guide for students reviewing ML concepts and techniques.
 3. A roadmap for practical ML workflows.
 
-
+---
 
 ### Acknowledgements
 Thanks to [**Leon Boschman**](https://github.com/lboschman) for contributing his ideas, slides and feedback to this course material.
