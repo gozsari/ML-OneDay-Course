@@ -3,7 +3,7 @@
 # Introduction to Machine Learning: One-Day Course 
 This is a one-day machine learning introductory course for beginners. The course covers the basics of supervised and unsupervised learning, including regression, classification, clustering, dimensinality reduction and anomaly detection. It also includes hands-on exercises and examples using popular Machine Learning (ML) libraries like Scikit-learn.
 
-The [slides](presentation/ML_intro.pdf) are used to guide the instructor through the course, providing a structured outline of the topics to be covered. 
+The [presentation](presentation/ML_intro.pdf) is used to guide the instructor through the course, providing a structured outline of the topics to be covered. 
 
 ## Table of Contents
 1. [Introduction to Machine Learning](#1-introduction-to-machine-learning)
@@ -33,6 +33,7 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
 - Comparison between supervised and unsupervised learning using Linear Regression and K-Means examples.
 - Basic visualizations of regression and clustering tasks.
 
+**Related notebook:** [Introduction to Machine Learning](notebooks/1-Introduction_to_Machine_Learning.ipynb)
 
 ---
 
@@ -55,6 +56,8 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
 - End-to-end example of an ML pipeline using Scikit-learn.
 - Visualization of preprocessing and evaluation results.
 
+**Related notebook:** [Machine Learning Workflow](notebooks/2-Understanding_ML_Workflow.ipynb)
+
 ---
 
 ## 3. Supervised Learning
@@ -71,6 +74,8 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
 - Hands-on example of Linear Regression with visualization of results.
 - Analysis of regression coefficients.
 
+**Related notebook:** [Supervised Learning - Regression](notebooks/3-Supervised-1-Regression.ipynb)
+
 ---
 
 ### 3.2 Classification
@@ -85,6 +90,8 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
 - Logistic Regression example for binary classification.
 - Hands-on exercise with Random Forest Classifier.
 - Visualization of confusion matrix results.
+
+**Related notebook:** [Supervised Learning - Classification](notebooks/3-Supervised-2-Classification.ipynb)
 
 ---
 
@@ -104,6 +111,8 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
 - K-Means Clustering example with synthetic data.
 - Visualizing clusters and centroids.
 
+**Related notebook:** [Unsupervised Learning - Clustering](notebooks/4-Unsupervised-1-Clustering.ipynb)
+
 ---
 
 ### 4.2 Other Unsupervised Learning Techniques
@@ -122,6 +131,8 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
 - Hands-on example of Isolation Forest for anomaly detection.
 - Apriori algorithm for discovering association rules.
 
+**Related notebook:** [Unsupervised Learning - Other Techniques](notebooks/4-Unsupervised-2-Others.ipynb)
+
 ---
 
 ## 5. In-Class Assignment
@@ -133,6 +144,8 @@ The [slides](presentation/ML_intro.pdf) are used to guide the instructor through
   - Preprocess the data (handle missing values, encode categorical variables).
   - Train, evaluate and optimize the model.
   - Submit the pickle file of the trained model.
+
+  **Related notebook:** [In-Class Assignment](notebooks/5-In-Class-assignment.ipynb)
 
 ---
 
