@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: "Introduction to Machine Learning Course"
+authors:
+  - family-names: "Özsari"
+    given-names: "Gökhan"
+    affiliation: "Chalmers University of Technology"
+    orcid: "https://orcid.org/0000-0002-3023-9843"
+abstract: |
+  This repository contains materials for the "Introduction to Machine Learning" course, 
+  including presentations, Jupyter notebooks, and in-class assignments. The course 
+  covers supervised and unsupervised learning, machine learning workflows, and practical 
+  hands-on projects.
+keywords:
+  - machine learning
+  - supervised learning
+  - unsupervised learning
+  - clustering
+  - classification
+  - regression
+  - Python
+  - scikit-learn
+license: "MIT"
+repository-code: "https://github.com/gozsari/ML_intro" 
+doi: "" 
+date-released: 2024-11-29
+version: "1.0.0"
+
+# Citation examples
+preferred-citation:
+  type: software
+  title: "Introduction to Machine Learning Course Repository"
+  authors:
+    - family-names: "Özsari"
+      given-names: "Gökhan"
+  version: "1.0.0"
+  url: "https://github.com/gozsari/ML_intro"
+  date-released: 2024-11-30
