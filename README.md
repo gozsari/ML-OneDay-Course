@@ -148,12 +148,18 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
   **Related notebook:** [In-Class Assignment](notebooks/5-In-Class-assignment.ipynb)
 
 ---
+## Using with GitHub Codespaces
 
-### Usage
-This ReadMe serves as:
-1. A reference for instructors to organize class materials.
-2. A guide for students reviewing ML concepts and techniques.
-3. A roadmap for practical ML workflows.
+You can run this repository directly in [GitHub Codespaces](https://github.com/features/codespaces) without needing to set up anything locally.
+
+### Steps:
+1. Click the **Code** button in the repository.
+2. Select **Open with Codespaces**.
+3. If you don’t see the option, click **Create codespace on main**.
+
+Once the Codespace environment loads:
+- All dependencies (e.g., Python packages) specified in `requirements.txt` will be automatically installed.
+- You can open and run the Jupyter Notebooks directly in the Codespace.
 
 ---
 
