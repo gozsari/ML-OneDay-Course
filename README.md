@@ -9,6 +9,7 @@
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Introduction-green)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
+![GitHub Codespaces](https://img.shields.io/badge/GitHub-Codespaces-blue)
 ![GitHub](https://img.shields.io/github/license/gozsari/ML_Intro)
 ![GitHub stars](https://img.shields.io/github/stars/gozsari/ML_Intro?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/gozsari/ML_Intro?style=social)
