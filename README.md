@@ -1,9 +1,26 @@
 
 
 # Introduction to Machine Learning: One-Day Course 
+![GitHub repo size](https://img.shields.io/github/repo-size/gozsari/ML_Intro)
+![GitHub contributors](https://img.shields.io/github/contributors/gozsari/ML_Intro)
+![GitHub stars](https://img.shields.io/github/stars/gozsari/ML_Intro?style=social)
+![GitHub forks](https://img.shields.io/github/forks/gozsari/ML_Intro?style=social)
+![GitHub issues](https://img.shields.io/github/issues/gozsari/ML_Intro)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/gozsari/ML_Intro)
+![Course](https://img.shields.io/badge/Course-Machine%20Learning-blue)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Introduction-green)
+![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
+![GitHub](https://img.shields.io/github/license/gozsari/ML_Intro)
+
 This is a one-day machine learning introductory course for beginners. The course covers the basics of supervised and unsupervised learning, including regression, classification, clustering, dimensinality reduction and anomaly detection. It also includes hands-on exercises and examples using popular Machine Learning (ML) libraries like Scikit-learn.
 
 The [presentation](presentation/ML_intro.pdf) is used to guide the instructor through the course, providing a structured outline of the topics to be covered. 
+
+<div align="center">
+    <img src="images/ml_intro.webp" alt="Machine Learning" width="70%">
+</div>
+
 
 ## Table of Contents
 1. [Introduction to Machine Learning](#1-introduction-to-machine-learning)
