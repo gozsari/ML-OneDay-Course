@@ -18,9 +18,9 @@ This is a one-day machine learning introductory course for beginners. The course
 The [presentation](presentation/ML_intro.pdf) is used to guide the instructor through the course, providing a structured outline of the topics to be covered. 
 
 <div align="center">
-    <img src="images/ml_intro.webp" alt="Machine Learning" width="70%">
+    <img src="images/ml_intro.webp" alt="Machine Learning" width="60%">
+    <p><em>Image created by using ChatGPT</em></p>
 </div>
-
 
 ## Table of Contents
 1. [Introduction to Machine Learning](#1-introduction-to-machine-learning)
