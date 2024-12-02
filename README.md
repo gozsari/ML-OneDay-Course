@@ -24,15 +24,27 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 </div>
 
 ## Table of Contents
-1. [Introduction to Machine Learning](#1-introduction-to-machine-learning)
-2. [Understanding the Machine Learning Workflow](#2-understanding-the-machine-learning-workflow)
-3. [Supervised Learning](#3-supervised-learning)
-   - [3.1 Regression](#31-regression)
-   - [3.2 Classification](#32-classification)
-4. [Unsupervised Learning](#4-unsupervised-learning)
-   - [4.1 Clustering](#41-clustering)
-   - [4.2 Other Unsupervised Learning Techniques](#42-other-unsupervised-learning-techniques)
-5. [In-Class Assignment](#5-in-class-assignment)
+- [Introduction to Machine Learning: One-Day Course](#introduction-to-machine-learning-one-day-course)
+  - [Table of Contents](#table-of-contents)
+  - [1. Introduction to Machine Learning](#1-introduction-to-machine-learning)
+    - [Highlights](#highlights)
+  - [2. Understanding the Machine Learning Workflow](#2-understanding-the-machine-learning-workflow)
+    - [Steps in the Workflow](#steps-in-the-workflow)
+    - [Highlights](#highlights-1)
+  - [3. Supervised Learning](#3-supervised-learning)
+    - [3.1 Regression](#31-regression)
+      - [Highlights](#highlights-2)
+    - [3.2 Classification](#32-classification)
+      - [Highlights](#highlights-3)
+  - [4. Unsupervised Learning](#4-unsupervised-learning)
+    - [4.1 Clustering](#41-clustering)
+      - [Highlights](#highlights-4)
+    - [4.2 Other Unsupervised Learning Techniques](#42-other-unsupervised-learning-techniques)
+      - [Highlights](#highlights-5)
+  - [5. In-Class Assignment](#5-in-class-assignment)
+  - [Using with GitHub Codespaces](#using-with-github-codespaces)
+    - [Steps:](#steps)
+    - [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -141,13 +153,11 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 - **Anomaly Detection**:
   - Identifies outliers or unusual patterns.
   - Examples: Isolation Forest, Z-scores.
-- **Association Rule Mining**:
-  - Finds relationships between items (e.g., market basket analysis).
+
 
 #### Highlights
 - PCA visualization of high-dimensional data projected into 2D.
 - Hands-on example of Isolation Forest for anomaly detection.
-- Apriori algorithm for discovering association rules.
 
 **Related notebook:** [Unsupervised Learning - Other Techniques](notebooks/4-Unsupervised-2-Others.ipynb)
 
