@@ -27,24 +27,17 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 - [Introduction to Machine Learning: One-Day Course](#introduction-to-machine-learning-one-day-course)
   - [Table of Contents](#table-of-contents)
   - [1. Introduction to Machine Learning](#1-introduction-to-machine-learning)
-    - [Highlights](#highlights)
   - [2. Understanding the Machine Learning Workflow](#2-understanding-the-machine-learning-workflow)
     - [Steps in the Workflow](#steps-in-the-workflow)
-    - [Highlights](#highlights-1)
   - [3. Supervised Learning](#3-supervised-learning)
     - [3.1 Regression](#31-regression)
-      - [Highlights](#highlights-2)
     - [3.2 Classification](#32-classification)
-      - [Highlights](#highlights-3)
   - [4. Unsupervised Learning](#4-unsupervised-learning)
     - [4.1 Clustering](#41-clustering)
-      - [Highlights](#highlights-4)
     - [4.2 Other Unsupervised Learning Techniques](#42-other-unsupervised-learning-techniques)
-      - [Highlights](#highlights-5)
   - [5. In-Class Assignment](#5-in-class-assignment)
-  - [Using with GitHub Codespaces](#using-with-github-codespaces)
-    - [Steps:](#steps)
-    - [Acknowledgements](#acknowledgements)
+- [Using with GitHub Codespaces](#using-with-github-codespaces)
+- [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -59,7 +52,7 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 - **Key Terminology**:
   - Dataset, Features, Labels, Model, Training, Testing, Hyperparameters, Overfitting, Underfitting.
 
-### Highlights
+**Highlights**
 - Comparison between supervised and unsupervised learning using Linear Regression and K-Means examples.
 - Basic visualizations of regression and clustering tasks.
 
@@ -81,8 +74,8 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 6. **Choose and Train a Model**: Select an algorithm based on the task.
 7. **Evaluate the Model**: Use metrics like RMSE, Accuracy, and Silhouette Score.
 8. **Hyperparameter Optimization**: Use `GridSearchCV` or `RandomizedSearchCV` for fine-tuning.
-
-### Highlights
+  
+**Highlights**
 - End-to-end example of an ML pipeline using Scikit-learn.
 - Visualization of preprocessing and evaluation results.
 
@@ -100,7 +93,7 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 - **Evaluation Metrics**:
   - MAE, MSE, RMSE, \( R^2 \).
 
-#### Highlights
+**Highlights**
 - Hands-on example of Linear Regression with visualization of results.
 - Analysis of regression coefficients.
 
@@ -116,7 +109,7 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 - **Evaluation Metrics**:
   - Accuracy, Precision, Recall, F1-Score, Confusion Matrix.
 
-#### Highlights
+**Highlights**
 - Logistic Regression example for binary classification.
 - Hands-on exercise with Random Forest Classifier.
 - Visualization of confusion matrix results.
@@ -137,7 +130,7 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
 - **Evaluation Metrics**:
   - Silhouette Score, Inertia, Visualization.
 
-#### Highlights
+**Highlights**
 - K-Means Clustering example with synthetic data.
 - Visualizing clusters and centroids.
 
@@ -155,7 +148,7 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
   - Examples: Isolation Forest, Z-scores.
 
 
-#### Highlights
+**Highlights**
 - PCA visualization of high-dimensional data projected into 2D.
 - Hands-on example of Isolation Forest for anomaly detection.
 
@@ -176,11 +169,11 @@ The [presentation](presentation/ML_intro.pdf) is used to guide the instructor th
   **Related notebook:** [In-Class Assignment](notebooks/5-In-Class-assignment.ipynb)
 
 ---
-## Using with GitHub Codespaces
+# Using with GitHub Codespaces
 
 You can run this repository directly in [GitHub Codespaces](https://github.com/features/codespaces) without needing to set up anything locally.
 
-### Steps:
+**Steps:**
 1. Click the **Code** button in the repository.
 2. Select **Open with Codespaces**.
 3. If you don’t see the option, click **Create codespace on main**.
@@ -191,5 +184,5 @@ Once the Codespace environment loads:
 
 ---
 
-### Acknowledgements
+# Acknowledgements
 Thanks to [**Leon Boschman**](https://github.com/lboschman) for contributing his ideas, slides and feedback to this course material.
