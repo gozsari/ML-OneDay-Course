@@ -20,7 +20,7 @@ keywords:
   - Python
   - scikit-learn
 license: "MIT"
-repository-code: "https://github.com/gozsari/ML_intro" 
+repository-code: "https://github.com/gozsari/ML-OneDay-Course" 
 doi: "10.5281/zenodo.14249784" 
 date-released: 2024-11-29
 version: "1.0.0"
@@ -33,5 +33,5 @@ preferred-citation:
     - family-names: "Özsari"
       given-names: "Gökhan"
   version: "1.0.0"
-  url: "https://github.com/gozsari/ML_intro"
+  url: "https://github.com/gozsari/ML-OneDay-Course"
   date-released: 2024-11-30
