@@ -13,7 +13,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/gozsari/ML-OneDay-Course?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/gozsari/ML-OneDay-Course?style=social)
 
-**A beginner-friendly one-day Machine Learning (ML) workshop covering fundamental concepts with hands-on examples.**  
+**A beginner-friendly one-day Machine Learning (ML) one-day course covering fundamental concepts with hands-on examples.**  
 
 ---
 
@@ -39,16 +39,21 @@ You'll explore **Regression, Classification, Clustering, Dimensionality Reductio
 git clone https://github.com/gozsari/ML-OneDay-Course.git
 cd ML-OneDay-Course
 ```
-2️⃣ Install dependencies:  
+2️⃣ Create a virtual environment:  
+```sh
+python -m venv venv
+source venv/bin/activate
+```
+3️⃣ Install dependencies:  
 ```sh
 pip install -r requirements.txt
 ```
-3️⃣ Run Jupyter Notebook:  
+4️⃣ Run Jupyter Notebook:  
 ```sh
 jupyter notebook
 ```
 
-### ** Run on GitHub Codespaces**  
+### **Run on GitHub Codespaces**  
 Click **Code > Open with Codespaces** and start immediately!  
 
 ---
