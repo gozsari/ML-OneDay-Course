@@ -26,7 +26,6 @@
 ---
 
 ## 📖 1. Introduction to Machine Learning  
-⏳ **Estimated Time**: ~1 hour  
 
 ### 🔹 What is AI and ML?  
 ✔ AI: The ability of machines to simulate intelligent behavior.  
@@ -45,7 +44,6 @@
 ---
 
 ## 📖 2. Understanding the Machine Learning Workflow  
-⏳ **Estimated Time**: ~1 hour  
 
 1️⃣ **Define the Problem** – What are you trying to solve?  
 2️⃣ **Collect & Clean Data** – Handle missing values, outliers.  
@@ -60,8 +58,7 @@
 
 ---
 
-## 📖 3. Supervised Learning  
-⏳ **Estimated Time**: ~2 hours  
+## 📖 3. Supervised Learning   
 
 ### 🔹 3.1 Regression  
 ✔ Predicts **continuous values** (e.g., house prices).  
@@ -87,8 +84,7 @@
 
 ---
 
-## 📖 4. Unsupervised Learning  
-⏳ **Estimated Time**: ~2 hours  
+## 📖 4. Unsupervised Learning   
 
 ### 🔹 4.1 Clustering  
 ✔ Groups similar data points together **without labels**.  
@@ -112,7 +108,6 @@
 ---
 
 ## 📖 5. In-Class Assignment  
-⏳ **Estimated Time**: ~1-2 hours  
 
 🔹 **Objective**: Build a classification model and submit predictions.  
 🔹 **Steps**:  
