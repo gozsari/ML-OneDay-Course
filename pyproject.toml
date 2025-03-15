@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-oneday-course-project"
+version = "0.1.0"
+description = "A short description of your project"
+authors = [
+    { name="Gökhan Özsari", email="gokhan.ozsari@chalmers.se" }
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "seaborn",
+    "matplotlib",
+    "notebook",
+    "joblib",
+    "scikit-learn"
+]
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
