@@ -1,5 +1,6 @@
 
-# Introduction to Machine Learning: One-Day Course  
+# Introduction to Machine Learning: One-Day Course 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14249784.svg)](https://doi.org/10.5281/zenodo.14249784) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/gozsari/ML-OneDay-Course)
 ![GitHub contributors](https://img.shields.io/github/contributors/gozsari/ML-OneDay-Course)
 ![GitHub issues](https://img.shields.io/github/issues/gozsari/ML-OneDay-Course)
@@ -12,9 +13,8 @@
 ![GitHub Codespaces](https://img.shields.io/badge/GitHub-Codespaces-blue)
 ![MIT License](https://img.shields.io/github/license/gozsari/ML-OneDay-Course)
 ![GitHub stars](https://img.shields.io/github/stars/gozsari/ML-OneDay-Course?style=social)
-![GitHub forks](https://img.shields.io/github/forks/gozsari/ML-OneDay-Course?style=social)  
-  
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14249784.svg)](https://doi.org/10.5281/zenodo.14249784)
+![GitHub forks](https://img.shields.io/github/forks/gozsari/ML-OneDay-Course?style=social)
+
 
 **A beginner-friendly one-day Machine Learning (ML) course covering fundamental concepts with hands-on examples.** 
 
