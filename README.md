@@ -6,8 +6,9 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/gozsari/ML-OneDay-Course)
 ![Course](https://img.shields.io/badge/Course-Machine%20Learning-blue)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Introduction-green)
-![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)
+![Python](https://img.shields.io/badge/Python-3.9%2B-yellow)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
+![Open Science](https://img.shields.io/badge/Open%20Science-Enabled-brightgreen)
 ![GitHub Codespaces](https://img.shields.io/badge/GitHub-Codespaces-blue)
 ![MIT License](https://img.shields.io/github/license/gozsari/ML-OneDay-Course)
 ![GitHub stars](https://img.shields.io/github/stars/gozsari/ML-OneDay-Course?style=social)
@@ -43,19 +44,28 @@ This **one-day ML course** has been prepared as part of the course [**"Introduct
 git clone https://github.com/gozsari/ML-OneDay-Course.git
 cd ML-OneDay-Course
 ```
-2️⃣ Create a virtual environment:  
+2️⃣ Install uv (which is a lightweight alternative to virtualenv):  
 ```sh
-python -m venv venv
-source venv/bin/activate
+pip install uv
 ```
-3️⃣ Install dependencies:  
+
+3️⃣  Create a virtual environment:  
 ```sh
-pip install -r requirements.txt
+uv venv --python 3.12 (or any Python 3.9+ version)
+source .venv/bin/activate
 ```
-4️⃣ Run Jupyter Notebook:  
+
+4️⃣ Install dependencies:  
+```sh
+uv sync
+```
+
+5️⃣ Run Jupyter Notebook:  
 ```sh
 jupyter notebook
 ```
+
+6️⃣ Open the Jupyter Notebook in your browser and start learning!
 
 ### **Run on GitHub Codespaces**  
 Click **Code > Open with Codespaces** and start immediately!  
