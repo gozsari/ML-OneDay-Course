@@ -6,7 +6,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/gozsari/ML-OneDay-Course)
 ![Course](https://img.shields.io/badge/Course-Machine%20Learning-blue)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Introduction-green)
-![Python](https://img.shields.io/badge/Python-3.9%2B-yellow)
+![Python](https://img.shields.io/badge/Python-3.11%2B-yellow)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Open Science](https://img.shields.io/badge/Open%20Science-Enabled-brightgreen)
 ![GitHub Codespaces](https://img.shields.io/badge/GitHub-Codespaces-blue)
@@ -37,7 +37,12 @@ This **one-day ML course** has been prepared as part of the course [**"Introduct
 
 ---
 
-## Quickstart: Run Locally or on Codespaces  
+## Quickstart: Run on Codespaces or Locally
+You can run the course notebooks on GitHub Codespaces or locally on your machine.
+
+### **Run on GitHub Codespaces**  
+Click **Code > Open with Codespaces** and start immediately!  
+
 ### **Run Locally**  
 1️⃣ Clone the repository:  
 ```sh
@@ -51,7 +56,7 @@ pip install uv
 
 3️⃣  Create a virtual environment:  
 ```sh
-uv venv --python 3.12 (or any Python 3.9+ version)
+uv venv --python 3.12 (or any Python 3.11+ version)
 source .venv/bin/activate
 ```
 
@@ -67,19 +72,20 @@ jupyter notebook
 
 6️⃣ Open the Jupyter Notebook in your browser and start learning!
 
-### **Run on GitHub Codespaces**  
-Click **Code > Open with Codespaces** and start immediately!  
 
 ---
 
 ## 📦 Dependencies  
 | Package  | Version  |  
 |----------|----------|  
-| Python   | 3.8+     |  
+| Python   | 3.11+     |  
 | NumPy    | latest   |  
 | Pandas   | latest   |  
 | Scikit-learn | latest |  
-| Matplotlib | latest |  
+| Matplotlib | latest | 
+| Seaborn | latest |
+| Jupyter | latest |
+ | joblib | latest |
   
 ---
 
