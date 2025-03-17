@@ -11,7 +11,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Open Science](https://img.shields.io/badge/Open%20Science-Enabled-brightgreen)
 ![GitHub Codespaces](https://img.shields.io/badge/GitHub-Codespaces-blue)
-![MIT License](https://img.shields.io/github/license/gozsari/ML-OneDay-Course)
+![MIT License](https://img.shields.io/github/license/gozsari/ML-OneDay-Course)  
 ![GitHub stars](https://img.shields.io/github/stars/gozsari/ML-OneDay-Course?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/gozsari/ML-OneDay-Course?style=social)
 
