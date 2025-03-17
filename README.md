@@ -14,7 +14,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/gozsari/ML-OneDay-Course?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/gozsari/ML-OneDay-Course?style=social)
 
-**A beginner-friendly one-day Machine Learning (ML) one-day course covering fundamental concepts with hands-on examples.**  
+**A beginner-friendly one-day Machine Learning (ML) course covering fundamental concepts with hands-on examples.** 
 
 ---
 
@@ -26,7 +26,7 @@ You'll explore **Regression, Classification, Clustering, Dimensionality Reductio
 📂 **Notebooks**: [Course Materials](notebooks/)  
 📘 **Detailed Course Content**: [COURSE_CONTENT.md](COURSE_CONTENT.md)  
 
-This **one-day ML course** has been prepared as part of the course [**"Introduction to Digital Resources"**](https://www.chalmers.se/en/infrastructure/ecommons/training-and-education/introduction-to-digital-resources/) conducted by [**Chalmers e-Commons**](https://www.chalmers.se/en/infrastructure/ecommons/).
+This course has been prepared as part of the course [**"Introduction to Digital Resources"**](https://www.chalmers.se/en/infrastructure/ecommons/training-and-education/introduction-to-digital-resources/) conducted by [**Chalmers e-Commons**](https://www.chalmers.se/en/infrastructure/ecommons/).
 
 ---
 
@@ -102,3 +102,4 @@ This project is licensed under the [MIT License](LICENSE.md).
 ## Acknowledgements  
 Special thanks to [**Leon Boschman**](https://github.com/lboschman) for contributing ideas, slides, and feedback.  
 
+---
