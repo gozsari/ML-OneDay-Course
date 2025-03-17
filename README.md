@@ -17,13 +17,17 @@
 
 ---
 
-## Overview  
+## 📌 Overview  
 This course introduces the basics of **Supervised & Unsupervised Learning** using Python and Scikit-learn.  
 You'll explore **Regression, Classification, Clustering, Dimensionality Reduction**, and **Anomaly Detection** through interactive Jupyter Notebooks.  
 
 📄 **Slides**: [Presentation](presentation/ML_intro.pdf)  
 📂 **Notebooks**: [Course Materials](notebooks/)  
 📘 **Detailed Course Content**: [COURSE_CONTENT.md](COURSE_CONTENT.md)  
+
+This **one-day ML course** has been prepared as part of the course [**"Introduction to Digital Resources"**](https://www.chalmers.se/en/infrastructure/ecommons/training-and-education/introduction-to-digital-resources/) conducted by [**Chalmers e-Commons**](https://www.chalmers.se/en/infrastructure/ecommons/).
+
+---
 
 <div align="center">
     <img src="assets/ml_intro.webp" alt="Machine Learning" width="80%">
