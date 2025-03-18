@@ -1,2 +1,17 @@
 .DS_Store
 .ipynb_checkpoints/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.log
+*.cache
+*.egg-info/
+*.egg
+*.env
+*.env.*
+*.env.local
+ml_one-day_course_book/
+ml_one-day_course_book/*

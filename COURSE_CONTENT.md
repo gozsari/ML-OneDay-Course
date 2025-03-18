@@ -1,4 +1,4 @@
-# 📚 Course Content: Introduction to Machine Learning - One Day Workshop  
+# 📚 Course Content: Introduction to Machine Learning - One Day Course  
 
 🔹 **Duration**: ~6-8 hours  
 🔹 **Prerequisites**: Basic Python knowledge recommended  
@@ -8,7 +8,7 @@
 ---
 
 ## 🗂️ Table of Contents  
-- [📚 Course Content: Introduction to Machine Learning - One Day Workshop](#-course-content-introduction-to-machine-learning---one-day-workshop)
+- [📚 Course Content: Introduction to Machine Learning - One Day Course](#-course-content-introduction-to-machine-learning---one-day-course)
   - [🗂️ Table of Contents](#️-table-of-contents)
   - [📖 1. Introduction to Machine Learning](#-1-introduction-to-machine-learning)
     - [🔹 What is AI and ML?](#-what-is-ai-and-ml)

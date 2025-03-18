@@ -51,28 +51,20 @@ Click **Code > Open with Codespaces** and start immediately!
 git clone https://github.com/gozsari/ML-OneDay-Course.git
 cd ML-OneDay-Course
 ```
-2️⃣ Install uv (which is a lightweight alternative to virtualenv):  
+2️⃣ Create a virtual environment:  
 ```sh
-pip install uv
-```
-
-3️⃣  Create a virtual environment:  
-```sh
-uv venv --python 3.12 (or any Python 3.11+ version)
+python3 -m venv .venv
 source .venv/bin/activate
 ```
-
-4️⃣ Install dependencies:  
+3️⃣ Install dependencies:  
 ```sh
-uv sync
+pip install -r requirements.txt
 ```
-
-5️⃣ Run Jupyter Notebook:  
+4️⃣ Run Jupyter Notebook:  
 ```sh
 jupyter notebook
 ```
-
-6️⃣ Open the Jupyter Notebook in your browser and start learning!
+5️⃣ Open the Jupyter Notebook in your browser and start learning!
 
 
 ---
