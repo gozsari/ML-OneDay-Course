@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img src="assets/header.jpg" alt="Machine Learning" width="100%">
+    <img src="assets/header.png" alt="Machine Learning" width="100%">
 </div>
 
 ---
