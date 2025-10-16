@@ -48,6 +48,7 @@ Click **Code > Open with Codespaces** and start immediately!
 
 ### **Run on Marimo**  
 1️⃣ Create a virtual environment following the instructions in [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md)
+
 2️⃣ Run Marimo Book:  
 Quick start:
 ```sh
@@ -64,12 +65,15 @@ Then select **Option 1** to open the interactive index.
 marimo edit 0-Index.py
 ```
 
+
 ### **Run Locally**  
 1️⃣ Create a virtual environment following the instructions in [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md)
+
 2️⃣ Run Jupyter Notebook:  
 ```sh
 jupyter notebook
 ```
+3️⃣ Open the Jupyter Notebook in your browser and start learning!
 
 ---
 
