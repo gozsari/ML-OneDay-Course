@@ -39,8 +39,20 @@ This course has been prepared as part of the course [**"Introduction to Digital 
 
 ---
 
-## Quickstart: Run on Codespaces or Locally
-You can run the course notebooks on GitHub Codespaces or locally on your machine.
+## Quickstart: Run on using Marimo or Codespaces or Locally
+You can run the course notebooks on Marimo, GitHub Codespaces, or locally on your machine.
+
+### **Run on Marimo**  
+
+```bash
+cd marimo_book
+./start_book.sh
+```
+for windows:
+```bash
+cd marimo_book
+start_book.bat
+```
 
 ### **Run on GitHub Codespaces**  
 Click **Code > Open with Codespaces** and start immediately!  
@@ -73,13 +85,14 @@ jupyter notebook
 | Package  | Version  |  
 |----------|----------|  
 | Python   | 3.11+     |  
-| NumPy    | latest   |  
-| Pandas   | latest   |  
-| Scikit-learn | latest |  
-| Matplotlib | latest | 
-| Seaborn | latest |
-| Jupyter | latest |
- | joblib | latest |
+| NumPy    | 1.24.0   |  
+| Pandas   | 2.0.0   |  
+| Scikit-learn | 1.3.0 |  
+| Matplotlib | 3.7.0 | 
+| Seaborn | 0.12.0 |
+| Jupyter | 1.0.0 |
+| joblib | 1.3.0 |
+| Marimo | 0.17.0 |
   
 ---
 

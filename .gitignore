@@ -12,6 +12,5 @@ __pycache__/
 *.egg
 *.env
 *.env.*
-*.env.local
 ml_one-day_course_book/
 ml_one-day_course_book/*
