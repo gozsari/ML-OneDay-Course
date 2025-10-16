@@ -39,23 +39,43 @@ This course has been prepared as part of the course [**"Introduction to Digital 
 
 ---
 
-## Quickstart: Run on using Marimo or Codespaces or Locally
-You can run the course notebooks on Marimo, GitHub Codespaces, or locally on your machine.
+## Quickstart: Run on using GitHub Codespaces or Marimo or Locally
+You can run the course notebooks on GitHub Codespaces, Marimo, or locally on your machine.
+
+
+### **Run on GitHub Codespaces**  
+Click **Code > Open with Codespaces** and start immediately!  
 
 ### **Run on Marimo**  
-
-```bash
+1️⃣ Clone the repository:  
+```sh
+git clone https://github.com/gozsari/ML-OneDay-Course.git
+cd ML-OneDay-Course
+```
+2️⃣ Create a virtual environment:  
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+```
+3️⃣ Install dependencies:  
+```sh
+pip install -r requirements.txt
+```
+4️⃣ Run Marimo Book:  
+Quick start:
+```sh
 cd marimo_book
 ./start_book.sh
 ```
 for windows:
-```bash
+```sh
 cd marimo_book
 start_book.bat
 ```
-
-### **Run on GitHub Codespaces**  
-Click **Code > Open with Codespaces** and start immediately!  
+Then select **Option 1** to open the interactive index.
+```sh
+marimo edit 0-Index.py
+```
 
 ### **Run Locally**  
 1️⃣ Clone the repository:  
