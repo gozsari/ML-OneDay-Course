@@ -47,27 +47,14 @@ You can run the course notebooks on GitHub Codespaces, Marimo, or locally on you
 Click **Code > Open with Codespaces** and start immediately!  
 
 ### **Run on Marimo**  
-1️⃣ Clone the repository:  
-```sh
-git clone https://github.com/gozsari/ML-OneDay-Course.git
-cd ML-OneDay-Course
-```
-2️⃣ Create a virtual environment:  
-```sh
-python3 -m venv .venv
-source .venv/bin/activate
-```
-3️⃣ Install dependencies:  
-```sh
-pip install -r requirements.txt
-```
-4️⃣ Run Marimo Book:  
+1️⃣ Create a virtual environment following the instructions in [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md)
+2️⃣ Run Marimo Book:  
 Quick start:
 ```sh
 cd marimo_book
 ./start_book.sh
 ```
-for windows:
+or for Windows:
 ```sh
 cd marimo_book
 start_book.bat
@@ -78,26 +65,11 @@ marimo edit 0-Index.py
 ```
 
 ### **Run Locally**  
-1️⃣ Clone the repository:  
-```sh
-git clone https://github.com/gozsari/ML-OneDay-Course.git
-cd ML-OneDay-Course
-```
-2️⃣ Create a virtual environment:  
-```sh
-python3 -m venv .venv
-source .venv/bin/activate
-```
-3️⃣ Install dependencies:  
-```sh
-pip install -r requirements.txt
-```
-4️⃣ Run Jupyter Notebook:  
+1️⃣ Create a virtual environment following the instructions in [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md)
+2️⃣ Run Jupyter Notebook:  
 ```sh
 jupyter notebook
 ```
-5️⃣ Open the Jupyter Notebook in your browser and start learning!
-
 
 ---
 
