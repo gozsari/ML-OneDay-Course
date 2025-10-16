@@ -1,7 +1,14 @@
-import marimo
+import marimo 
+
 
 __generated_with = "0.17.0"
 app = marimo.App()
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -148,7 +155,7 @@ def _(LinearRegression, np):
 def _(KMeans, np):
     # Unsupervised Learning Example: Clustering
     X_unsupervised = np.random.rand(50, 2) * 100
-    kmeans = KMeans(n_clusters=3, random_state=42)
+    kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
     labels = kmeans.fit_predict(X_unsupervised)
     return X_unsupervised, labels
 
@@ -171,6 +178,115 @@ def _(X_supervised, X_unsupervised, labels, plt, y_pred, y_supervised):
     plt.xlabel('Feature 1')
     plt.ylabel('Feature 2')
     plt.show()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ## 🧪 Interactive Playground
+
+    Use the controls below to interact with a simple regression and clustering setup. As you change parameters, the plots and fitted models update automatically.
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    # Controls for linear regression data generation
+    slope = mo.ui.slider(0.5, 3.0, value=1.8, step=0.1, label="Slope (m)")
+    intercept = mo.ui.slider(-2.0, 4.0, value=2.0, step=0.1, label="Intercept (b)")
+    noise = mo.ui.slider(0.0, 2.0, value=1.0, step=0.1, label="Noise σ")
+    n_samples = mo.ui.slider(20, 200, value=100, step=10, label="Samples")
+    mo.hstack([slope, intercept, noise, n_samples])
+    return intercept, n_samples, noise, slope
+
+
+@app.cell
+def _(LinearRegression, intercept, n_samples, noise, np, slope):
+    # Generate interactive regression data and fit a model
+    rng_reg = np.random.default_rng(42)
+    X_i = 2.5 * rng_reg.standard_normal((n_samples.value, 1)) + 1.5
+    y_i = intercept.value + slope.value * X_i + noise.value * rng_reg.standard_normal((n_samples.value, 1))
+    model_i = LinearRegression()
+    model_i.fit(X_i, y_i)
+    y_pred_i = model_i.predict(X_i)
+    return X_i, model_i, y_i, y_pred_i
+
+
+@app.cell
+def _(X_i, plt, y_i, y_pred_i):
+    # Plot interactive regression with sorted X for a clean line
+    import numpy as _np
+    _order = _np.argsort(X_i[:, 0])
+    _Xs, _ys, _yps = X_i[_order], y_i[_order], y_pred_i[_order]
+    plt.figure(figsize=(6, 4))
+    plt.scatter(_Xs, _ys, color='blue', label='Data')
+    plt.plot(_Xs, _yps, color='red', label='Model')
+    plt.title('Interactive Linear Regression')
+    plt.xlabel('Feature')
+    plt.ylabel('Target')
+    plt.legend()
+    plt.show()
+    return
+
+
+@app.cell
+def _(mo):
+    # Controls for clustering demo
+    k = mo.ui.slider(2, 6, value=3, step=1, label="Clusters (k)")
+    points = mo.ui.slider(30, 300, value=100, step=10, label="Points")
+    seed = mo.ui.slider(0, 9999, value=42, step=1, label="Seed")
+    mo.hstack([k, points, seed])
+    return k, points, seed
+
+
+@app.cell
+def _(k, np, points, seed):
+    # Generate clustering data
+    rng_k = np.random.default_rng(seed.value)
+    Xk = rng_k.random((points.value, 2)) * 100.0
+    return (Xk,)
+
+
+@app.cell
+def _(KMeans, Xk, k):
+    # Fit K-Means with interactive k
+    kmeans_i = KMeans(n_clusters=int(k.value), random_state=42, n_init=10)
+    labels_i = kmeans_i.fit_predict(Xk)
+    return kmeans_i, labels_i
+
+
+@app.cell
+def _(Xk, labels_i, plt):
+    # Plot interactive clustering
+    plt.figure(figsize=(6, 4))
+    plt.scatter(Xk[:, 0], Xk[:, 1], c=labels_i, cmap='viridis')
+    plt.title('Interactive K-Means Clustering')
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.show()
+    return
+
+
+@app.cell
+def _(mo):
+    # Quick check question (create UI here)
+    q = mo.ui.radio(["Supervised", "Unsupervised", "Reinforcement"], value=None, label="What type of learning is linear regression?")
+    return (q,)
+
+
+@app.cell(hide_code=True)
+def _(mo, q):
+    # Derive feedback in a separate cell
+    feedback = (
+        mo.md("✅ Correct! Linear regression is a supervised learning method.")
+        if q.value == "Supervised"
+        else mo.md("❌ Try again.") if q.value else mo.md("Select an option above.")
+    )
+    mo.vstack([q, feedback])
     return
 
 
