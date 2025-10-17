@@ -10,7 +10,7 @@ def _(mo):
         r"""
     # 3. Supervised Learning :rocket:
 
-    :memo: **Definition:** Supervised learning is a type of machine learning where the model is trained on a labeled dataset. The model learns the relationship between the features and the labels and uses this relationship to make predictions on new data.
+    **Definition:** Supervised learning is a type of machine learning where the model is trained on a labeled dataset. The model learns the relationship between the features and the labels and uses this relationship to make predictions on new data.
 
     - **Supervised learning** is the most common type of machine learning. 
     - It is the first type of learning that most people encounter. 
@@ -122,6 +122,7 @@ def _(mo):
        - Measures the average absolute difference between predicted and actual values.
        - Lower MAE indicates better model performance.
        - Formula: MAE = 1/n * Σ |y - ŷ| where \( n \) is the number of samples, \( y \) is the actual value, and \( ŷ \) is the predicted value.
+    
     ---
 
     1. **Mean Squared Error (MSE)**:
