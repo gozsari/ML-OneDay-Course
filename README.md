@@ -43,9 +43,12 @@ You can run the course notebooks on GitHub Codespaces, Marimo, or locally on you
 
 
 ### **Run on GitHub Codespaces**  
-Click **Code > Open with Codespaces** and start immediately!  
+1️⃣  Click **Code > Open with Codespaces** and start immediately!  
 
-### **Run on Marimo**  
+2️⃣ Open the Jupyter Notebook in your browser and start learning! They are located in the [notebooks](notebooks/) folder.
+
+
+### **Run on Marimo**  (In Progress)
 1️⃣ Create a virtual environment following the instructions in [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md)
 
 2️⃣ Run Marimo Book:  
