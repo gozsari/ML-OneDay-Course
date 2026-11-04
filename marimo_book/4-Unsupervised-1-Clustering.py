@@ -228,6 +228,117 @@ def _(X, labels, silhouette_score):
 def _(mo):
     mo.md(
         r"""
+    ## 🧪 Interactive Playground: Choosing the Number of Clusters
+
+    In real problems we don't know the "right" number of clusters. Here you control both the **true** structure of the data and the **k** used by K-Means.
+
+    - The **elbow plot** shows inertia for k = 2 … 10. Inertia always decreases as k grows; look for the "elbow" where it stops dropping quickly.
+    - The **silhouette plot** usually peaks near the true number of clusters.
+    - Increase the **cluster spread** to make the clusters overlap and see how both metrics become less clear.
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    # Controls for the clustering playground
+    cl_true_centers = mo.ui.slider(2, 8, value=4, step=1, label="True number of clusters", show_value=True)
+    cl_std = mo.ui.slider(0.3, 3.0, value=1.0, step=0.1, label="Cluster spread (std)", show_value=True)
+    cl_k = mo.ui.slider(2, 10, value=3, step=1, label="K-Means k", show_value=True)
+    mo.hstack([cl_true_centers, cl_std, cl_k])
+    return cl_k, cl_std, cl_true_centers
+
+
+@app.cell
+def _(KMeans, cl_std, cl_true_centers, make_blobs, silhouette_score):
+    # Generate data and evaluate K-Means for every k from 2 to 10
+    X_cl, _ = make_blobs(n_samples=300, centers=cl_true_centers.value, cluster_std=cl_std.value, random_state=7)
+
+    cl_k_values = list(range(2, 11))
+    cl_inertias, cl_silhouettes = [], []
+    for _k in cl_k_values:
+        _km = KMeans(n_clusters=_k, random_state=42, n_init=10).fit(X_cl)
+        cl_inertias.append(_km.inertia_)
+        cl_silhouettes.append(silhouette_score(X_cl, _km.labels_))
+    return X_cl, cl_inertias, cl_k_values, cl_silhouettes
+
+
+@app.cell
+def _(KMeans, X_cl, cl_inertias, cl_k, cl_k_values, cl_silhouettes, mo, plt):
+    # Fit K-Means with the selected k and plot clusters, elbow, and silhouette curves
+    _km = KMeans(n_clusters=cl_k.value, random_state=42, n_init=10).fit(X_cl)
+    _i = cl_k_values.index(cl_k.value)
+
+    _fig, (_ax1, _ax2, _ax3) = plt.subplots(1, 3, figsize=(15, 4.5))
+    _ax1.scatter(X_cl[:, 0], X_cl[:, 1], c=_km.labels_, cmap='viridis', s=30)
+    _ax1.scatter(_km.cluster_centers_[:, 0], _km.cluster_centers_[:, 1], c='red', marker='X', s=200, label='Centroids')
+    _ax1.set_title(f'K-Means with k = {cl_k.value}')
+    _ax1.set_xlabel('Feature 1')
+    _ax1.set_ylabel('Feature 2')
+    _ax1.legend()
+
+    _ax2.plot(cl_k_values, cl_inertias, 'o-')
+    _ax2.plot(cl_k.value, cl_inertias[_i], 'ro', markersize=12)
+    _ax2.set_title('Elbow Plot (Inertia)')
+    _ax2.set_xlabel('k')
+    _ax2.set_ylabel('Inertia')
+
+    _ax3.plot(cl_k_values, cl_silhouettes, 'o-', color='green')
+    _ax3.plot(cl_k.value, cl_silhouettes[_i], 'ro', markersize=12)
+    _ax3.set_title('Silhouette Score')
+    _ax3.set_xlabel('k')
+    _ax3.set_ylabel('Silhouette score')
+    _fig.tight_layout()
+
+    _best_k = cl_k_values[cl_silhouettes.index(max(cl_silhouettes))]
+    mo.vstack([
+        mo.md(
+            f"**Selected k = {cl_k.value}:** silhouette `{cl_silhouettes[_i]:.2f}`, inertia `{cl_inertias[_i]:.0f}` "
+            f"&nbsp;|&nbsp; **Best k by silhouette:** `{_best_k}`"
+        ),
+        _fig,
+    ])
+    return
+
+
+@app.cell
+def _(mo):
+    # Quick check question
+    cl_quiz = mo.ui.radio(
+        [
+            "Points are deep inside their own cluster",
+            "Clusters overlap and points sit near the boundary between clusters",
+            "Every point is assigned to the wrong cluster",
+        ],
+        value=None,
+        label="What does a silhouette score close to 0 mean?",
+    )
+    return (cl_quiz,)
+
+
+@app.cell(hide_code=True)
+def _(cl_quiz, mo):
+    if cl_quiz.value is None:
+        _feedback = mo.md("Select an option above.")
+    elif cl_quiz.value == "Clusters overlap and points sit near the boundary between clusters":
+        _feedback = mo.callout(
+            mo.md("✅ Correct! A score near 0 means a point is about as close to a neighbouring cluster as to its own. Try increasing the cluster spread above."),
+            kind="success",
+        )
+    else:
+        _feedback = mo.callout(
+            mo.md("❌ Not quite. Scores near 1 mean well-separated clusters and scores near −1 mean wrong assignments. What's in between?"),
+            kind="danger",
+        )
+    mo.vstack([cl_quiz, _feedback])
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     ## 📝 Key Takeaways:
     1. Clustering is an unsupervised learning technique for grouping similar data points.
     2. Common clustering methods include partition-based (K-Means), hierarchical, and density-based clustering.

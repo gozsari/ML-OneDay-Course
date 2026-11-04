@@ -268,6 +268,173 @@ def _(X_test, plt, y_pred, y_test):
 def _(mo):
     mo.md(
         r"""
+    ## 🧪 Interactive Playground: Linear vs. Polynomial Regression
+
+    Pick the *true* relationship that generates the data, then change the **polynomial degree** of the model.
+
+    - With **degree 1** (a straight line) on curved data, the model **underfits**: both train and test errors are high.
+    - With a **very high degree** and few samples, the model **overfits**: the train error is tiny but the test error grows.
+    - The **residual plot** (actual − predicted) should look like random noise around 0 for a good model. A visible pattern means the model is missing structure in the data.
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    # Controls for the regression playground
+    reg_shape = mo.ui.dropdown(["Linear", "Quadratic", "Sine wave"], value="Sine wave", label="True relationship")
+    reg_degree = mo.ui.slider(1, 15, value=1, step=1, label="Polynomial degree", show_value=True)
+    reg_noise = mo.ui.slider(0.0, 3.0, value=0.5, step=0.1, label="Noise σ", show_value=True)
+    reg_n = mo.ui.slider(20, 300, value=60, step=10, label="Samples", show_value=True)
+    mo.hstack([reg_shape, reg_degree, reg_noise, reg_n])
+    return reg_degree, reg_n, reg_noise, reg_shape
+
+
+@app.cell
+def _(
+    LinearRegression,
+    mean_absolute_error,
+    mean_squared_error,
+    np,
+    r2_score,
+    reg_degree,
+    reg_n,
+    reg_noise,
+    reg_shape,
+    train_test_split,
+):
+    # Generate data from the chosen relationship and fit a polynomial model
+    from sklearn.pipeline import make_pipeline as _make_pipeline
+    from sklearn.preprocessing import PolynomialFeatures as _PolynomialFeatures
+
+    _true_functions = {
+        "Linear": lambda x: 2 + 1.8 * x,
+        "Quadratic": lambda x: 1 + 0.5 * x - 0.8 * x**2,
+        "Sine wave": lambda x: 3 * np.sin(1.5 * x),
+    }
+    reg_true_fn = _true_functions[reg_shape.value]
+
+    _rng = np.random.default_rng(0)
+    X_reg = _rng.uniform(-3, 3, size=(reg_n.value, 1))
+    y_reg = reg_true_fn(X_reg[:, 0]) + reg_noise.value * _rng.standard_normal(reg_n.value)
+    X_reg_train, X_reg_test, y_reg_train, y_reg_test = train_test_split(X_reg, y_reg, test_size=0.3, random_state=42)
+
+    reg_model = _make_pipeline(
+        _PolynomialFeatures(degree=reg_degree.value, include_bias=False),
+        LinearRegression(),
+    )
+    reg_model.fit(X_reg_train, y_reg_train)
+    reg_train_pred = reg_model.predict(X_reg_train)
+    reg_test_pred = reg_model.predict(X_reg_test)
+
+    def _metrics(y_true, y_hat):
+        _mse = mean_squared_error(y_true, y_hat)
+        return mean_absolute_error(y_true, y_hat), _mse, np.sqrt(_mse), r2_score(y_true, y_hat)
+
+    reg_metrics = {
+        "Train": _metrics(y_reg_train, reg_train_pred),
+        "Test": _metrics(y_reg_test, reg_test_pred),
+    }
+    return (
+        X_reg,
+        X_reg_test,
+        X_reg_train,
+        reg_metrics,
+        reg_model,
+        reg_test_pred,
+        reg_train_pred,
+        reg_true_fn,
+        y_reg,
+        y_reg_test,
+        y_reg_train,
+    )
+
+
+@app.cell
+def _(
+    X_reg_test,
+    X_reg_train,
+    mo,
+    np,
+    plt,
+    reg_degree,
+    reg_metrics,
+    reg_model,
+    reg_test_pred,
+    reg_train_pred,
+    reg_true_fn,
+    y_reg,
+    y_reg_test,
+    y_reg_train,
+):
+    # Plot the fitted curve and the residuals, and show train/test metrics
+    _grid = np.linspace(-3, 3, 300).reshape(-1, 1)
+
+    _fig, (_ax1, _ax2) = plt.subplots(1, 2, figsize=(12, 4.5))
+    _ax1.scatter(X_reg_train, y_reg_train, color='blue', alpha=0.7, label='Train')
+    _ax1.scatter(X_reg_test, y_reg_test, color='orange', edgecolor='k', label='Test')
+    _ax1.plot(_grid, reg_true_fn(_grid[:, 0]), 'g--', label='True relationship')
+    _ax1.plot(_grid, reg_model.predict(_grid), 'r-', linewidth=2, label=f'Model (degree {reg_degree.value})')
+    _ax1.set_ylim(y_reg.min() - 2, y_reg.max() + 2)
+    _ax1.set_title('Model Fit')
+    _ax1.set_xlabel('Feature')
+    _ax1.set_ylabel('Target')
+    _ax1.legend()
+
+    _ax2.scatter(reg_train_pred, y_reg_train - reg_train_pred, color='blue', alpha=0.7, label='Train')
+    _ax2.scatter(reg_test_pred, y_reg_test - reg_test_pred, color='orange', edgecolor='k', label='Test')
+    _ax2.axhline(0, color='gray', linestyle='--')
+    _ax2.set_title('Residuals (Actual − Predicted)')
+    _ax2.set_xlabel('Predicted value')
+    _ax2.set_ylabel('Residual')
+    _ax2.legend()
+    _fig.tight_layout()
+
+    _rows = "\n".join(
+        f"| {_name} | {_mae:.2f} | {_mse:.2f} | {_rmse:.2f} | {_r2:.2f} |"
+        for _name, (_mae, _mse, _rmse, _r2) in reg_metrics.items()
+    )
+    mo.vstack([
+        mo.md("| Set | MAE | MSE | RMSE | R² |\n|---|---|---|---|---|\n" + _rows),
+        _fig,
+    ])
+    return
+
+
+@app.cell
+def _(mo):
+    # Quick check question
+    reg_quiz = mo.ui.radio(
+        ["MAE", "MSE", "R²"],
+        value=None,
+        label="Which metric punishes large errors the most, because it squares them?",
+    )
+    return (reg_quiz,)
+
+
+@app.cell(hide_code=True)
+def _(mo, reg_quiz):
+    if reg_quiz.value is None:
+        _feedback = mo.md("Select an option above.")
+    elif reg_quiz.value == "MSE":
+        _feedback = mo.callout(
+            mo.md("✅ Correct! Squaring makes one large error count much more than several small ones, so MSE (and RMSE) is sensitive to outliers."),
+            kind="success",
+        )
+    else:
+        _feedback = mo.callout(
+            mo.md("❌ Not quite. Look again at the *Common Metrics* section: which one squares the errors?"),
+            kind="danger",
+        )
+    mo.vstack([reg_quiz, _feedback])
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     ## 📝 Key Takeaways:
     1. Regression is a powerful technique for predicting continuous outcomes.
     2. Linear regression models a straight-line relationship, but other types like polynomial regression can handle non-linear data.

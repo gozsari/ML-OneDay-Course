@@ -36,6 +36,7 @@ def _():
             "number": "1",
             "title": "Introduction to Machine Learning",
             "file": "1-Introduction_to_Machine_Learning.py",
+            "playground": "Regression and k-means playgrounds, quiz",
             "description": "Learn the fundamentals of ML, types of learning, and key terminology.",
             "duration": "45 min"
         },
@@ -43,6 +44,7 @@ def _():
             "number": "2",
             "title": "Understanding ML Workflow",
             "file": "2-Understanding_ML_Workflow.py",
+            "playground": "Overfitting / train-test split playground, quiz",
             "description": "Explore the complete pipeline for machine learning projects.",
             "duration": "45 min"
         },
@@ -50,6 +52,7 @@ def _():
             "number": "3.1",
             "title": "Supervised Learning - Regression",
             "file": "3-Supervised-1-Regression.py",
+            "playground": "Polynomial degree and residuals playground, quiz",
             "description": "Master regression techniques for predicting continuous values.",
             "duration": "60 min"
         },
@@ -57,6 +60,7 @@ def _():
             "number": "3.2",
             "title": "Supervised Learning - Classification",
             "file": "3-Supervised-2-Classification.py",
+            "playground": "Model and decision-threshold playground, quiz",
             "description": "Learn classification methods for discrete categories.",
             "duration": "60 min"
         },
@@ -64,6 +68,7 @@ def _():
             "number": "4.1",
             "title": "Unsupervised Learning - Clustering",
             "file": "4-Unsupervised-1-Clustering.py",
+            "playground": "Choosing k: elbow and silhouette playground, quiz",
             "description": "Discover how to group similar data points using clustering.",
             "duration": "45 min"
         },
@@ -71,6 +76,7 @@ def _():
             "number": "4.2",
             "title": "Unsupervised Learning - Other Techniques",
             "file": "4-Unsupervised-2-Others.py",
+            "playground": "PCA components and Isolation Forest playgrounds, quiz",
             "description": "Explore dimensionality reduction and anomaly detection.",
             "duration": "45 min"
         },
@@ -78,6 +84,7 @@ def _():
             "number": "5",
             "title": "In-Class Assignment",
             "file": "5-In-Class-assignment.py",
+            "playground": "Optional model and hyperparameter explorer",
             "description": "Apply your knowledge by building a classifier model.",
             "duration": "90 min"
         },
@@ -88,11 +95,11 @@ def _():
 @app.cell(hide_code=True)
 def _(chapters, mo):
     # Summary table of chapters with durations and quick commands
-    header = "| # | Title | Duration | Open Command |\n|---|-------|----------|--------------|\n"
+    header = "| # | Title | Duration | Interactive | Open Command |\n|---|-------|----------|-------------|--------------|\n"
     rows = []
     for ch in chapters:
         cmd = f"marimo edit {ch['file']}"
-        rows.append(f"| {ch['number']} | {ch['title']} | {ch.get('duration','')} | `{cmd}` |")
+        rows.append(f"| {ch['number']} | {ch['title']} | {ch.get('duration','')} | {ch.get('playground','')} | `{cmd}` |")
     mo.md(header + "\n".join(rows))
     return
 
@@ -109,6 +116,8 @@ def _(chapters, mo):
         {chapter['description']}
 
         **Duration:** {chapter.get('duration','')}
+
+        **🧪 Interactive:** {chapter.get('playground','')}
 
         **File:** `{chapter['file']}`
 
@@ -138,14 +147,21 @@ def _(mo):
     ```
 
     ### Option 2: Use Marimo's File Browser
-    1. Run `marimo tutorial file-browser` to see how to navigate files
-    2. Or simply open files from your editor
+    From the `marimo_book` folder, open the whole folder instead of a single file:
+    ```bash
+    marimo edit .
+    ```
+    Marimo shows a file browser in your browser where every chapter is one click away.
 
-    ### Option 3: Run All Chapters
-    You can also run the notebooks as scripts:
+    ### Option 3: Run a Chapter as an App
+    Open a chapter in read-only app mode (code hidden, widgets still interactive):
     ```bash
     marimo run <chapter-file>.py
     ```
+
+    ## 🧪 Interactive Playgrounds
+
+    Every chapter includes a **playground**: sliders and dropdowns that re-run the model as you change them. Chapters 1 to 4 also have a short quiz question. Look for the 🧪 headings.
 
     ## 💡 Key Features of Marimo
 
@@ -156,9 +172,9 @@ def _(mo):
 
     ## 📦 Requirements
 
-    Make sure you have all dependencies installed:
+    Make sure you have all dependencies installed (run from the `marimo_book` folder):
     ```bash
-    pip install -r requirements.txt
+    pip install -r ../requirements.txt
     ```
 
     ## 🎯 Learning Path

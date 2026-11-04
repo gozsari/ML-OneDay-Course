@@ -13,7 +13,8 @@ marimo_book/
 │   ├── 4-Unsupervised-2-Others.py
 │   └── 5-In-Class-assignment.py
 │
-├── 📚 DOCUMENTATION (1 file)
+├── 📚 DOCUMENTATION (2 files)
+│   ├── README.md               [Overview and how to start]
 │   └── .STRUCTURE.txt          [This file]
 │
 ├── 🚀 LAUNCH SCRIPTS (2 files)
@@ -24,23 +25,23 @@ marimo_book/
 📊 STATISTICS
 -------------
 Total Files:         12
-Interactive Chapters: 8 (7 chapters + 1 index)
-Documentation Files:  1
-Launch Scripts:       2
-Config Files:         1
+Interactive Notebooks: 8 (7 chapters + 1 index)
+Documentation Files:   2
+Launch Scripts:        2
 
 ════════════════════════════════════════════════════════
 
 🎯 QUICK START COMMANDS
 -----------------------
 
-1. Install dependencies:
-   $ pip install -r requirements.txt
+1. Install dependencies (from the marimo_book folder):
+   $ pip install -r ../requirements.txt
 
 2. Launch the book:
    $ ./start_book.sh              [Linux/Mac]
    $ start_book.bat               [Windows]
    $ marimo edit 0-Index.py       [Direct]
+   $ marimo edit .                [File browser with all chapters]
 
 3. Open a specific chapter:
    $ marimo edit 1-Introduction_to_Machine_Learning.py
@@ -128,6 +129,7 @@ TOTAL COURSE TIME: 6-7 hours
    - Built-in widgets
    - Real-time feedback
    - Modern interface
+   - A 🧪 playground in every chapter (plus a quiz in chapters 1-4)
 
 ✅ No Kernel Restarts
    - Automatic dependency tracking
