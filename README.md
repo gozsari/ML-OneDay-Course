@@ -48,7 +48,9 @@ You can run the course notebooks on GitHub Codespaces, Marimo, or locally on you
 2️⃣ Open the Jupyter Notebook in your browser and start learning! They are located in the [notebooks](notebooks/) folder.
 
 
-### **Run on Marimo**  (In Progress)
+### **Run on Marimo**
+The [marimo book](marimo_book/) has the same content as the Jupyter notebooks, plus an interactive playground in every chapter (sliders and dropdowns that re-run the models live) and short quiz questions.
+
 1️⃣ Create a virtual environment following the instructions in [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md)
 
 2️⃣ Run Marimo Book:  
@@ -62,10 +64,16 @@ or for Windows:
 cd marimo_book
 start_book.bat
 ```
-Then select **Option 1** to open the interactive index.
+Then select **Option 1** to open the interactive index, or **Option 9** to browse all chapters.
+
+You can also start marimo directly:
 ```sh
-marimo edit 0-Index.py
+cd marimo_book
+marimo edit 0-Index.py   # open the index
+marimo edit .            # or open a file browser with every chapter
 ```
+
+To run the marimo book in GitHub Codespaces, see the [marimo book README](marimo_book/README.md#github-codespaces).
 
 
 ### **Run Locally**  

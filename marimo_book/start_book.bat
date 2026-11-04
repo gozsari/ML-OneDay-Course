@@ -2,6 +2,9 @@
 REM Machine Learning One-Day Course - Marimo Book Launcher (Windows)
 REM This script helps you start the marimo book
 
+REM Run from the folder that contains this script, so it works from anywhere
+cd /d "%~dp0"
+
 echo.
 echo 🎓 Machine Learning One-Day Course - Marimo Book
 echo ================================================
@@ -12,7 +15,7 @@ where marimo >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo ❌ Marimo is not installed!
     echo 📦 Installing marimo and dependencies...
-    pip install -r requirements.txt
+    pip install -r ..\requirements.txt
 )
 
 echo ✅ Marimo is installed!
@@ -27,11 +30,12 @@ echo   5. Chapter 3.2: Supervised Learning - Classification
 echo   6. Chapter 4.1: Unsupervised Learning - Clustering
 echo   7. Chapter 4.2: Unsupervised Learning - Other Techniques
 echo   8. Chapter 5: In-Class Assignment
-echo   9. Exit
+echo   9. Browse all chapters (marimo file browser)
+echo  10. Exit
 echo.
 
 if "%1"=="" (
-    set /p choice="Enter your choice (1-9): "
+    set /p choice="Enter your choice (1-10): "
 ) else (
     set choice=%1
 )
@@ -61,10 +65,12 @@ if "%choice%"=="1" (
     echo 🚀 Opening Chapter 5...
     marimo edit 5-In-Class-assignment.py
 ) else if "%choice%"=="9" (
+    echo 🚀 Opening the file browser with all chapters...
+    marimo edit .
+) else if "%choice%"=="10" (
     echo 👋 Goodbye!
     exit /b 0
 ) else (
-    echo ❌ Invalid choice. Please run again and select 1-9.
+    echo ❌ Invalid choice. Please run again and select 1-10.
     exit /b 1
 )
-

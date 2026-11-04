@@ -182,6 +182,109 @@ def _(X_test, clf_opt, y_test):
 def _(mo):
     mo.md(
         r"""
+    ## 🧪 Optional: Quick Model Explorer
+
+    Finished your own model above? Use this explorer to build intuition about how different classifiers and hyperparameters behave on the **full iris dataset** (all 4 features).
+
+    Pick a model, then adjust its hyperparameters. The **cross-validation accuracy** is computed on the training set only, which is how you should compare settings. The **test accuracy** is what you'd report at the end.
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    # Model choice for the explorer
+    explorer_model = mo.ui.dropdown(
+        ["Random Forest", "Logistic Regression", "SVM (RBF kernel)", "Decision Tree", "K-Nearest Neighbors"],
+        value="Random Forest",
+        label="Model",
+    )
+    explorer_model
+    return (explorer_model,)
+
+
+@app.cell
+def _(explorer_model, mo):
+    # Hyperparameter controls that depend on the selected model
+    _strengths = [0.001, 0.01, 0.1, 1, 10, 100, 1000]
+    _controls = {
+        "Random Forest": {
+            "n_estimators": mo.ui.slider(10, 300, value=100, step=10, label="n_estimators", show_value=True),
+            "max_depth": mo.ui.slider(1, 10, value=3, step=1, label="max_depth", show_value=True),
+        },
+        "Logistic Regression": {
+            "C": mo.ui.slider(steps=_strengths, value=1, label="C (inverse regularization)", show_value=True),
+        },
+        "SVM (RBF kernel)": {
+            "C": mo.ui.slider(steps=_strengths, value=1, label="C", show_value=True),
+            "gamma": mo.ui.slider(steps=[0.001, 0.01, 0.1, 1, 10], value=0.1, label="gamma", show_value=True),
+        },
+        "Decision Tree": {
+            "max_depth": mo.ui.slider(1, 10, value=3, step=1, label="max_depth", show_value=True),
+            "min_samples_split": mo.ui.slider(2, 20, value=2, step=1, label="min_samples_split", show_value=True),
+        },
+        "K-Nearest Neighbors": {
+            "n_neighbors": mo.ui.slider(1, 30, value=5, step=1, label="n_neighbors", show_value=True),
+            "weights": mo.ui.dropdown(["uniform", "distance"], value="uniform", label="weights"),
+        },
+    }
+    explorer_params = mo.ui.dictionary(_controls[explorer_model.value], label="Hyperparameters")
+    explorer_params
+    return (explorer_params,)
+
+
+@app.cell
+def _(explorer_model, explorer_params, iris, mo, plt):
+    # Train the selected model, then report cross-validation and test results
+    from sklearn.ensemble import RandomForestClassifier as _RandomForestClassifier
+    from sklearn.linear_model import LogisticRegression as _LogisticRegression
+    from sklearn.metrics import ConfusionMatrixDisplay as _ConfusionMatrixDisplay
+    from sklearn.model_selection import cross_val_score as _cross_val_score
+    from sklearn.model_selection import train_test_split as _train_test_split
+    from sklearn.neighbors import KNeighborsClassifier as _KNeighborsClassifier
+    from sklearn.pipeline import make_pipeline as _make_pipeline
+    from sklearn.preprocessing import StandardScaler as _StandardScaler
+    from sklearn.svm import SVC as _SVC
+    from sklearn.tree import DecisionTreeClassifier as _DecisionTreeClassifier
+
+    _estimators = {
+        "Random Forest": lambda p: _RandomForestClassifier(random_state=42, **p),
+        "Logistic Regression": lambda p: _LogisticRegression(max_iter=1000, **p),
+        "SVM (RBF kernel)": lambda p: _SVC(kernel='rbf', **p),
+        "Decision Tree": lambda p: _DecisionTreeClassifier(random_state=42, **p),
+        "K-Nearest Neighbors": lambda p: _KNeighborsClassifier(**p),
+    }
+    _model = _make_pipeline(_StandardScaler(), _estimators[explorer_model.value](explorer_params.value))
+
+    _X_tr, _X_te, _y_tr, _y_te = _train_test_split(
+        iris.data, iris.target, test_size=0.3, stratify=iris.target, random_state=42
+    )
+    _cv_scores = _cross_val_score(_model, _X_tr, _y_tr, cv=5)
+    _model.fit(_X_tr, _y_tr)
+    _test_accuracy = _model.score(_X_te, _y_te)
+
+    _fig, _ax = plt.subplots(figsize=(5, 4))
+    _ConfusionMatrixDisplay.from_estimator(
+        _model, _X_te, _y_te, display_labels=iris.target_names, cmap='Blues', colorbar=False, ax=_ax
+    )
+    _ax.set_title(f'{explorer_model.value}: Test Set')
+    _fig.tight_layout()
+
+    mo.vstack([
+        mo.md(
+            f"**5-fold CV accuracy (train):** `{_cv_scores.mean():.3f} ± {_cv_scores.std():.3f}` &nbsp;|&nbsp; "
+            f"**Test accuracy:** `{_test_accuracy:.3f}`"
+        ),
+        _fig,
+    ])
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     ## Useful Links:
     - [Scikit-learn datasets](https://scikit-learn.org/1.5/api/sklearn.datasets.html)
     - [Scikit-learn preprocessing](https://scikit-learn.org/stable/modules/preprocessing.html)

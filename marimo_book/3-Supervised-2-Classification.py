@@ -386,6 +386,139 @@ def _(np, y_pred, y_test):
 def _(mo):
     mo.md(
         r"""
+    ## 🧪 Interactive Playground: Models and the Decision Threshold
+
+    A classifier usually outputs a **probability**, and we turn it into a class by comparing it with a **threshold** (0.5 by default).
+
+    In this dataset label `0` means **malignant** and `1` means **benign**. In this playground we treat **malignant as the positive class**, because that's the case we care most about catching.
+
+    - **Lower the threshold:** more tumours are flagged as malignant, so **recall goes up** (fewer missed cancers) and **precision goes down** (more false alarms).
+    - **Raise the threshold:** the opposite happens.
+    - **Switch the model** to see how different algorithms compare on the same split.
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    # Controls for the classification playground
+    clf_model_choice = mo.ui.dropdown(
+        ["Logistic Regression", "Decision Tree", "K-Nearest Neighbors"],
+        value="Logistic Regression",
+        label="Model",
+    )
+    clf_threshold = mo.ui.slider(0.05, 0.95, value=0.5, step=0.05, label="Decision threshold", show_value=True)
+    mo.hstack([clf_model_choice, clf_threshold], justify="start", gap=2)
+    return clf_model_choice, clf_threshold
+
+
+@app.cell
+def _(LogisticRegression, X_test, X_train, clf_model_choice, y_test, y_train):
+    # Train the selected model and get the probability of "malignant" for each test sample
+    from sklearn.neighbors import KNeighborsClassifier as _KNeighborsClassifier
+    from sklearn.pipeline import make_pipeline as _make_pipeline
+    from sklearn.preprocessing import StandardScaler as _StandardScaler
+    from sklearn.tree import DecisionTreeClassifier as _DecisionTreeClassifier
+
+    _models = {
+        "Logistic Regression": _make_pipeline(_StandardScaler(), LogisticRegression(max_iter=1000)),
+        "Decision Tree": _DecisionTreeClassifier(max_depth=4, random_state=42),
+        "K-Nearest Neighbors": _make_pipeline(_StandardScaler(), _KNeighborsClassifier(n_neighbors=15)),
+    }
+    # Positive class = malignant (label 0 in the original dataset)
+    clf_y_train_pos = (y_train == 0).astype(int)
+    clf_y_test_pos = (y_test == 0).astype(int)
+
+    clf_playground_model = _models[clf_model_choice.value].fit(X_train, clf_y_train_pos)
+    clf_test_proba = clf_playground_model.predict_proba(X_test)[:, 1]
+    return clf_test_proba, clf_y_test_pos
+
+
+@app.cell
+def _(
+    ConfusionMatrixDisplay,
+    clf_model_choice,
+    clf_test_proba,
+    clf_threshold,
+    clf_y_test_pos,
+    confusion_matrix,
+    mo,
+    plt,
+):
+    # Apply the threshold, then show the confusion matrix, metrics, and probability distribution
+    from sklearn.metrics import (
+        accuracy_score as _accuracy_score,
+        f1_score as _f1_score,
+        matthews_corrcoef as _matthews_corrcoef,
+        precision_score as _precision_score,
+        recall_score as _recall_score,
+    )
+
+    _pred = (clf_test_proba >= clf_threshold.value).astype(int)
+    _cm = confusion_matrix(clf_y_test_pos, _pred, labels=[0, 1])
+
+    _fig, (_ax1, _ax2) = plt.subplots(1, 2, figsize=(12, 4.5))
+    ConfusionMatrixDisplay(_cm, display_labels=["Benign", "Malignant"]).plot(ax=_ax1, cmap='Blues', colorbar=False)
+    _ax1.set_title(f'{clf_model_choice.value} (threshold = {clf_threshold.value:.2f})')
+
+    _ax2.hist(clf_test_proba[clf_y_test_pos == 0], bins=20, range=(0, 1), alpha=0.6, label='Actually benign')
+    _ax2.hist(clf_test_proba[clf_y_test_pos == 1], bins=20, range=(0, 1), alpha=0.6, label='Actually malignant')
+    _ax2.axvline(clf_threshold.value, color='red', linestyle='--', label='Threshold')
+    _ax2.set_title('Predicted Probability of Malignant')
+    _ax2.set_xlabel('Probability')
+    _ax2.set_ylabel('Number of test samples')
+    _ax2.legend()
+    _fig.tight_layout()
+
+    _tn, _fp, _fn, _tp = _cm.ravel()
+    mo.vstack([
+        mo.md(
+            f"**Accuracy:** `{_accuracy_score(clf_y_test_pos, _pred):.3f}` &nbsp;|&nbsp; "
+            f"**Precision:** `{_precision_score(clf_y_test_pos, _pred, zero_division=0):.3f}` &nbsp;|&nbsp; "
+            f"**Recall:** `{_recall_score(clf_y_test_pos, _pred, zero_division=0):.3f}` &nbsp;|&nbsp; "
+            f"**F1:** `{_f1_score(clf_y_test_pos, _pred, zero_division=0):.3f}` &nbsp;|&nbsp; "
+            f"**MCC:** `{_matthews_corrcoef(clf_y_test_pos, _pred):.3f}`\n\n"
+            f"Missed cancers (false negatives): **{_fn}** &nbsp;|&nbsp; False alarms (false positives): **{_fp}**"
+        ),
+        _fig,
+    ])
+    return
+
+
+@app.cell
+def _(mo):
+    # Quick check question
+    clf_quiz = mo.ui.radio(
+        ["Accuracy", "Precision", "Recall"],
+        value=None,
+        label="In cancer screening, missing a malignant tumour is very costly. Which metric should you prioritise?",
+    )
+    return (clf_quiz,)
+
+
+@app.cell(hide_code=True)
+def _(clf_quiz, mo):
+    if clf_quiz.value is None:
+        _feedback = mo.md("Select an option above.")
+    elif clf_quiz.value == "Recall":
+        _feedback = mo.callout(
+            mo.md("✅ Correct! Recall measures how many of the actual positives we catch. Try lowering the threshold above to see recall go up."),
+            kind="success",
+        )
+    else:
+        _feedback = mo.callout(
+            mo.md("❌ Not quite. Which metric counts the *false negatives* (missed positive cases)?"),
+            kind="danger",
+        )
+    mo.vstack([clf_quiz, _feedback])
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     ## 📝 Key Takeaways:
     1. Classification is used to predict discrete categories (e.g., spam vs. not spam).
     2. Types include binary, multi-class, and multi-label classification.
