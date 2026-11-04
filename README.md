@@ -38,8 +38,8 @@ You'll explore **Regression, Classification, Clustering, Dimensionality Reductio
 This course has been prepared as part of the course [**"Introduction to Digital Resources"**](https://www.chalmers.se/en/infrastructure/ecommons/training-and-education/introduction-to-digital-resources/) conducted by [**Chalmers e-Commons**](https://www.chalmers.se/en/infrastructure/ecommons/).
 
 
-## Quickstart: Run on using GitHub Codespaces or Marimo or Locally
-You can run the course notebooks on GitHub Codespaces, Marimo, or locally on your machine.
+## Quickstart: Run on GitHub Codespaces, Marimo, Locally, or an HPC Cluster
+You can run the course notebooks on GitHub Codespaces, Marimo, locally on your machine, or on an HPC cluster.
 
 
 ### **Run on GitHub Codespaces**  
@@ -84,6 +84,25 @@ To run the marimo book in GitHub Codespaces, see the [marimo book README](marimo
 jupyter notebook
 ```
 3️⃣ Open the Jupyter Notebook in your browser and start learning!
+
+
+### **Run on an HPC Cluster**  
+1️⃣ Clone the repository and set up the environment:
+```sh
+git clone https://github.com/gozsari/ML-OneDay-Course.git ~/ML-OneDay-Course
+cd ~/ML-OneDay-Course
+source env.sh
+```
+The first run loads the software modules and creates the virtual environment; every later session only needs `source env.sh`.
+
+2️⃣ Start an interactive job and launch the notebooks:
+```sh
+srun -A <project> -p <partition> -t 02:00:00 --pty bash
+source env.sh
+jupyter lab --no-browser --ip=$(hostname) --port=8888   # or: cd marimo_book && marimo edit --headless --host $(hostname)
+```
+
+3️⃣ Open a tunnel from your own machine and follow the printed URL. See [HOW_TO_CREATE_ENV.md](HOW_TO_CREATE_ENV.md) for the SSH tunnel command and troubleshooting.
 
 ---
 
